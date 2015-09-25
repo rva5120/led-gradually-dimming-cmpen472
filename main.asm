@@ -129,7 +129,7 @@ dimup
 
 loopdimup
           LDAA        Counter_i       ; A = current i
-          CMPA        #100            ; is i == 101?
+          CMPA        #101            ; is i == 101?
           BEQ         donedimup       ; if i == 101, stop looping
 
           JSR         d50             ; dim i% for 1 msec, 50 times
@@ -177,7 +177,7 @@ d50
           
 loop_50   
           JSR         dim_i           ; jump to subroutine that will dim i% for 1msec
-          DEC         Counter_50      ; decreae counter_50
+          DEC         Counter_50      ; decrease counter_50
           BNE         loop_50         ; keep looping until counter_50 is 0
           
           PULA                        ; restore current i to A
@@ -223,7 +223,7 @@ done      RTS
 *   - Input: a 16 bit number in 'Counter2', stored in register X
 *   - Output: cpu cycles wasted to delay a few msec.
 *   - Registers in use: X register, as counter
-*   - Memory locations in use: a 16 bit input number in 'Counter2' originally set to $002F = 47            
+*   - Memory locations in use: a 16 bit input number in 'Counter_10us' originally set to $002F = 47 cycles           
             
 delay_10usec
             LDX         Counter_10us    ; 10 usec delay
